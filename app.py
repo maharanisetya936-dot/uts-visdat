@@ -116,12 +116,14 @@ rate_semua = df["AttritionFlag"].mean() * 100
 gaji = data["MonthlyIncome"].mean()
 
 k1, k2, k3, k4 = st.columns(4)
-k1.metric("👥 Total Karyawan", f"{total:,}".replace(",", "."))
-k2.metric("🚪 Karyawan Keluar", f"{keluar:,}".replace(",", "."))
+k1.metric("👥 Total Karyawan", f"{total:,}")
+k2.metric("🚪 Karyawan Keluar", f"{keluar:,}")
+selisih = rate - rate_semua
 k3.metric(
     "📉 Tingkat Attrition",
     f"{rate:.1f}%",
-    delta=f"{rate - rate_semua:+.1f} poin vs seluruh data",
+    # Delta hanya tampil bila filter mengubah angka (dibanding seluruh data)
+    delta=f"{selisih:+.1f} poin vs total" if total < len(df) and abs(selisih) >= 0.05 else None,
     delta_color="inverse",
 )
 k4.metric("💰 Rata-rata Gaji Bulanan", f"${gaji:,.0f}")

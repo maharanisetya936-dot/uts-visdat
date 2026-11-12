@@ -11,7 +11,7 @@ Program Studi Sistem Informasi, Universitas Dirgantara Marsekal Suryadarma
 
 ## 🔗 Tautan
 
-- **Live Dashboard:** [LINK_DASHBOARD_STREAMLIT](LINK_DASHBOARD_STREAMLIT)
+- **Live Dashboard:** [uts-visdat-attrition2.streamlit.app](https://uts-visdat-attrition2.streamlit.app)
 - **Dataset Kaggle:** [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
 ## 📌 Latar Belakang
@@ -53,8 +53,7 @@ uts-visdat/
 ├── .streamlit/
 │   └── config.toml            # tema warna dashboard
 ├── data/
-│   ├── raw/
-│   │   └── WA_Fn-UseC_-HR-Employee-Attrition.csv   # data mentah dari Kaggle
+│   ├── WA_Fn-UseC_-HR-Employee-Attrition.csv   # data mentah dari Kaggle
 │   ├── clean_data.py          # skrip pembersihan data
 │   └── hr_attrition_clean.csv # data yang sudah dibersihkan
 ├── app.py                     # aplikasi dashboard Streamlit
@@ -66,7 +65,7 @@ uts-visdat/
 
 1. Clone repositori ini:
    ```bash
-   git clone https://github.com/USERNAME_GITHUB/uts-visdat.git
+   git clone https://github.com/maharanisetya936-dot/uts-visdat.git
    cd uts-visdat
    ```
 2. Pasang library yang dibutuhkan:
