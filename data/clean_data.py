@@ -3,7 +3,7 @@ clean_data.py
 Skrip pembersihan data (data cleaning) untuk dataset
 IBM HR Analytics Employee Attrition & Performance (Kaggle).
 
-Input : data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv
+Input : data/WA_Fn-UseC_-HR-Employee-Attrition.csv
 Output: data/hr_attrition_clean.csv
 
 Cara menjalankan (dari folder utama proyek):
@@ -14,7 +14,7 @@ from pathlib import Path
 import pandas as pd
 
 BASE = Path(__file__).resolve().parent
-RAW_FILE = BASE / "raw" / "WA_Fn-UseC_-HR-Employee-Attrition.csv"
+RAW_FILE = BASE / "WA_Fn-UseC_-HR-Employee-Attrition.csv"
 CLEAN_FILE = BASE / "hr_attrition_clean.csv"
 
 
