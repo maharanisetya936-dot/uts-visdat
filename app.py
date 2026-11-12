@@ -33,6 +33,9 @@ TEKS = "#1E1B4B"
 PETA_WARNA = {"Keluar": FUCHSIA, "Bertahan": BIRU_TUA}
 SKALA_HEATMAP = ["#EEF2FF", "#C4B5FD", UNGU, UNGU_TUA]
 
+# Toolbar Plotly disembunyikan agar tidak menutupi grafik
+KONFIG_GRAFIK = {"displayModeBar": False}
+
 DATA_FILE = Path(__file__).parent / "data" / "hr_attrition_clean.csv"
 
 # ------------------------------------------------------------------
@@ -114,7 +117,7 @@ def gaya_grafik(fig, tinggi=360):
     """Gaya seragam untuk semua grafik Plotly."""
     fig.update_layout(
         height=tinggi,
-        margin=dict(t=10, b=10, l=10, r=10),
+        margin=dict(t=30, b=10, l=10, r=10),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Inter, Segoe UI, sans-serif", color=TEKS, size=13),
@@ -258,7 +261,7 @@ with c1:
                 text=f"<b>Tertinggi: {puncak['Rate']:.0f}%</b>", showarrow=True, arrowhead=2,
                 ay=-35, font=dict(color=UNGU_TUA), arrowcolor=UNGU_TUA,
             )
-        st.plotly_chart(gaya_grafik(fig_line, 360), use_container_width=True)
+        st.plotly_chart(gaya_grafik(fig_line, 360), use_container_width=True, config=KONFIG_GRAFIK)
 
 with c2:
     with st.container(border=True):
@@ -280,7 +283,7 @@ with c2:
                 x=0.5, y=0.5, font=dict(size=24, color=UNGU_TUA), showarrow=False,
             )],
         )
-        st.plotly_chart(gaya_grafik(fig_donut, 360), use_container_width=True)
+        st.plotly_chart(gaya_grafik(fig_donut, 360), use_container_width=True, config=KONFIG_GRAFIK)
 
 # ------------------------------------------------------------------
 # Baris 2: Bar chart (jabatan) + Heatmap (lembur x kepuasan kerja)
@@ -311,7 +314,7 @@ with c3:
             showlegend=False, bargap=0.3,
             xaxis_range=[0, max(jabatan["Rate"].max() * 1.22, 5)],
         )
-        st.plotly_chart(gaya_grafik(fig_bar, 400), use_container_width=True)
+        st.plotly_chart(gaya_grafik(fig_bar, 400), use_container_width=True, config=KONFIG_GRAFIK)
 
 with c4:
     with st.container(border=True):
@@ -331,7 +334,7 @@ with c4:
         fig_heat.update_traces(textfont=dict(size=15))
         fig_heat.update_xaxes(side="bottom", showgrid=False)
         fig_heat.update_yaxes(showgrid=False)
-        st.plotly_chart(gaya_grafik(fig_heat, 400), use_container_width=True)
+        st.plotly_chart(gaya_grafik(fig_heat, 400), use_container_width=True, config=KONFIG_GRAFIK)
 
 # ------------------------------------------------------------------
 # Baris 3: Box plot (gaji)
@@ -346,7 +349,7 @@ with st.container(border=True):
         points="outliers",
     )
     fig_box.update_layout(showlegend=False)
-    st.plotly_chart(gaya_grafik(fig_box, 280), use_container_width=True)
+    st.plotly_chart(gaya_grafik(fig_box, 280), use_container_width=True, config=KONFIG_GRAFIK)
 
 # ------------------------------------------------------------------
 # Storytelling: insight dinamis (ikut berubah sesuai filter)
